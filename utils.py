@@ -37,12 +37,20 @@ class Task:
 
   def getTime(self):
     res = Time(0,0)
+    hourS = minuteS = '0'
     if('h' in self.time):
-      res.hour = int(self.time.split('h')[0])
+      hourS = self.time.split('h')[0]
       if('m' in self.time):
-        res.minute = int(self.time.split('h')[1].split('m')[0])
-    # else:
-    #   res.minute = int(self.time.split('m')[0])
+        minuteS = self.time.split('h')[1].split('m')[0]
+    else:
+      minuteS = int(self.time.split('m')[0])
+    errorMessage = '無効な引数です。:'+self.time
+    if(hourS.isdecimal()):
+      res.hour = int(hourS)
+    else:common.error(errorMessage)
+    if(minuteS.isdecimal()):
+      res.minute = int(minuteS)
+    else:common.error(errorMessage)
     return res
 
   def toStr(self):
@@ -93,12 +101,20 @@ def getTaskById(data,id):
 
 def getTime(str):
     res = Time(0,0)
+    hourS = minuteS = '0'
     if('h' in str):
-      res.hour = int(str.split('h')[0])
+      hourS = str.split('h')[0]
       if('m' in str):
-        res.minute = int(str.split('h')[1].split('m')[0])
+        minuteS = str.split('h')[1].split('m')[0]
     else:
-      res.minute = int(str.split('m')[0])
+      minuteS = str.split('m')[0]
+    errorMessage = '無効な引数です。:'+ str
+    if(hourS.isdecimal()):
+      res.hour = int(hourS)
+    else:common.error(errorMessage)
+    if(minuteS.isdecimal()):
+      res.minute = int(minuteS)
+    else:common.error(errorMessage)
     return res
 
 def cmpState(s1,s2):
