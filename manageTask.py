@@ -82,8 +82,6 @@ if(len(args)==2):
 if(args[2] == 'start'):#todo
   data[taskId].start = str(DT_NOW.month)+'/' + str(DT_NOW.day)
   utils.updateData(data)
-  print(data[taskId].toStr())
-  sys.exit()
 
 if(args[2] == 'delete'):#todo
   print(data[taskId].id+"を削除します。")
@@ -93,6 +91,7 @@ if(args[2] == 'delete'):#todo
   log.saveLog()
 
   data.pop(taskId)
+  
   utils.updateData(data)
   sys.exit()
 
