@@ -54,10 +54,12 @@ if(len(args)==1):
     my_style = [TerminalColor.BOLD,taskColor]
     TerminalColor.c_print(data[i].toStr(),my_style)
 
-    forExcelText += data[i].id + ' ' + data[i].title + '\t' + str(data[i].getTime().toHour()) + '\n'
-    f = open('forExcel.txt', 'w',encoding="utf-8")
-    f.write(forExcelText)
-    f.close()
+    hour = data[i].getTime().toHour()
+    if(hour>0):
+      forExcelText += data[i].id + ' ' + data[i].title + '\t' + str(data[i].getTime().toHour()) + '\n'
+  f = open('Record/forExcel.txt', 'w',encoding="utf-8")
+  f.write(forExcelText)
+  f.close()
   sys.exit()
 
 taskId = utils.getTaskById(data,args[1])

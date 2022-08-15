@@ -12,6 +12,6 @@ class Log:
     return text.format(self.id,self.content,self.time )
 
   def saveLog(self):
-    f = open('log.txt', 'a',encoding="utf-8")
+    f = open('Record/log.txt', 'a',encoding="utf-8")
     f.write(self.toStr())
     f.close()
