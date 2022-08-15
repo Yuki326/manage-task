@@ -1,3 +1,5 @@
+import sys
+
 class Time:
   def __init__(self, hour, minute):
       self.hour = hour
