@@ -1,6 +1,5 @@
 from operator import imod
 import sys
-Path = '~/Desktop/dev/atomica/manage-task/Record/'
 import common
 class Time:
   def __init__(self, hour, minute):
@@ -65,7 +64,7 @@ def getText(data):
   return text
 
 def getData():
-  f = open('Record/test.txt', 'r+',encoding="utf-8")
+  f = open('Record/taskList.txt', 'r+',encoding="utf-8")
   areas = f.read().split()
   data = []
   tmp={}
@@ -90,7 +89,7 @@ def getData():
 def updateData(data):
   text = getText(data)
   if(type(text)!=str):sys.exit()
-  f = open(Path+'test.txt', 'w',encoding="utf-8")#ファイルの中身が消えるので注意
+  f = open('Record/taskList.txt', 'w',encoding="utf-8")#ファイルの中身が消えるので注意
   f.write(text)
   f.close()
 
