@@ -1,6 +1,7 @@
+from operator import imod
 import sys
 Path = '~/Desktop/dev/atomica/manage-task/Record/'
-
+import common
 class Time:
   def __init__(self, hour, minute):
       self.hour = hour
