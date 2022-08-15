@@ -47,11 +47,17 @@ args = sys.argv
 
 data = utils.getData()
 if(len(args)==1):
+  forExcelText = ''
   for i in range(len(data)):
     taskColor = color.get(data[i].state)
     if(taskColor==None):taskColor = TerminalColor.TODO
     my_style = [TerminalColor.BOLD,taskColor]
     TerminalColor.c_print(data[i].toStr(),my_style)
+
+    forExcelText += data[i].id + ' ' + data[i].title + '\t' + str(data[i].getTime().toHour()) + '\n'
+    f = open('forExcel.txt', 'w',encoding="utf-8")
+    f.write(forExcelText)
+    f.close()
   sys.exit()
 
 taskId = utils.getTaskById(data,args[1])
@@ -59,7 +65,7 @@ if(taskId == -1):
   data.append(utils.Task(args[1],'#','-','-','0m','todo'))
   utils.updateData(data)
   taskId = len(data)-1
-  
+
   content = 'none->' + data[taskId].state
   log = log_utils.Log(data[taskId].id,content,timeToStr)
   log.saveLog()

@@ -19,6 +19,10 @@ class Time:
     text = "{}h{}m"
     return text.format(self.hour, self.minute)
 
+  def toHour(self):
+    res = self.hour + int(self.minute/6)/10
+    return res
+
 class Task:
   
    # コンストラクタ
