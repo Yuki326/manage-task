@@ -4,15 +4,11 @@ class Time:
       self.hour = hour
       self.minute = minute
       
-  def addTime(self,toAdd,isPlus):
+  def addTime(self,toAdd):
     sumMinute = self.hour*60
     sumMinute += self.minute
-    if(isPlus):#todo 正負判定を早めにする
-      sumMinute += toAdd.hour*60
-      sumMinute += toAdd.minute
-    else:
-      sumMinute -= toAdd.hour*60
-      sumMinute -= toAdd.minute
+    sumMinute += toAdd.hour*60
+    sumMinute += toAdd.minute
     res = Time(0,0)
     res.hour = int(sumMinute/60)
     res.minute = sumMinute%60
@@ -25,9 +21,9 @@ class Time:
 class Task:
   
    # コンストラクタ
-  def __init__(self, id, description, time, state):
+  def __init__(self, id, title, time, state):
     self.id = id
-    self.description = description
+    self.title = title
     self.time = time
     self.state = state
 
@@ -43,7 +39,7 @@ class Task:
 
   def toStr(self):
     text = "{} {} {} {}\n"
-    return text.format(self.id, self.description,self.time,self.state)
+    return text.format(self.id, self.title,self.time,self.state)
 
 def getText(data):
   text = ''
@@ -61,7 +57,7 @@ def getData():
           tmp = Task('','','','')
           tmp.id=areas[i]
       if(i%4==1):
-          tmp.description=areas[i]
+          tmp.title=areas[i]
       if(i%4==2):
           tmp.time=areas[i]
       if(i%4==3):
@@ -99,25 +95,50 @@ if(len(args)==1):
   sys.exit()
 
 data = getData()
-idx = getTaskById(data,args[1])
-if(idx == -1):
+taskId = getTaskById(data,args[1])
+if(taskId == -1):
   data.append(Task(args[1],'#','0m','todo'))
   updateData(data)
-  idx = len(data)-1
+  taskId = len(data)-1
 
 if(len(args)==2):
-  print(data[idx].toStr())
+  print(data[taskId].toStr())
   sys.exit()
 
-origin = data[idx].getTime()
-symbol = args[2][:1]
-if(symbol=='+' or symbol=='-'):
-  isPlus = (symbol == '+')
-  toAdd=args[2][1:]
-  new = origin.addTime(getTime(toAdd),isPlus)
-  data[idx].time= new.toStr()
-  print(data[idx].toStr())
+if(args[2] == 'start'):#todo
   updateData(data)
   sys.exit()
 
+symbols = []
+for i in args[2:]:
+  symbols.append(i[:1])
+print(symbols)
+if('+' in symbols or '-' in symbols):
+  origin = data[taskId].getTime()
+  if('+' in symbols):
+    idx = symbols.index('+')+2
+    Arg=args[idx][1:]
+    toAdd = getTime(Arg)
+  else:
+    idx = symbols.index('-')+2
+    Arg=args[idx][1:]
+    toAdd = getTime(Arg)
+    toAdd.hour *= -1
+    toAdd.minute *= -1
+  new = origin.addTime(toAdd)
+  data[taskId].time= new.toStr()
+  updateData(data)
 
+if('=' in symbols):
+  idx = symbols.index('=')+2
+  data[taskId].title = args[idx][1:]
+  updateData(data)
+
+if('?' in symbols):
+  print("a\n")
+  idx = symbols.index('?')+2
+  data[taskId].state= args[idx][1:]
+  updateData(data)
+
+# :start ~end
+print(data[taskId].toStr())
