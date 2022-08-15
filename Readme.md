@@ -1,28 +1,14 @@
-// 2022-8.txt
-ブランチ　説明　時間　状態
-A-10 # 5h low // wait,done,high,medium
-A-13 機能実装 3h2m done
+![image](https://user-images.githubusercontent.com/88820769/184725862-542f6035-ee73-4ffd-b51a-5a5c6cf7adde.png)
 
-sh record.sh AT-10 +3h10m // -も可
-#=> A-10 # 8h10m
-
-cat taskRecord/2022-8.txt
-#=>
-A-10 バグ修正 8h10m medium
-A-13 機能実装 3h2m done
-
-#discordbot=> +3h10m AT-10//時間でソートする処理も行う
-
-sh record.sh A-10 $バグ修正 //組み合わせ可
-
-sh record.sh A-10 ->medium
-
-sh taskRecord/getSumTime.sh 2022-8 　// 省略した場合今月
-#=> sum:11h12m
-
-toExcel.sh 2022-8.txt
-
-// 日付ごとでも取得したい
-2022-8Date.txt
-1 A-10:3h10m A-8:2h5m
-2
+# 操作説明
+- python manageTask.py : タスク一覧を表示
+- python manageTask.py [タスクID] start : タスクを開始
+- python manageTask.py [タスクID] delete : タスクを削除
+- python manageTask.py [タスクID] (引数) : タスクを編集※組み合わせ、順不同可
+# 引数一覧
+- ?[状態] :　状態を設定
+- +[ {}h{}m or {}h or {}m] : 時間を加算
+- +[ {}h{}m or {}h or {}m] : 時間を減算
+- =[タイトル]　: タイトルを設定
+- :[開始日] : 開始日を設定
+- ~[終了日] : 終了日を設定
