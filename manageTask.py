@@ -6,6 +6,7 @@ import log_utils
 from enum import Enum
 DT_NOW = datetime.datetime.now()
 timeToStr = str(DT_NOW.strftime('%Y-%m-%d %H:%M:%S'))
+Path = '~/Desktop/dev/atomica/manage-task/Record/'
 
 class TerminalColor:
     """ ターミナル色変更用クラス """
@@ -57,7 +58,7 @@ if(len(args)==1):
     hour = data[i].getTime().toHour()
     if(hour>0):
       forExcelText += data[i].id + ' ' + data[i].title + '\t' + str(data[i].getTime().toHour()) + '\n'
-  f = open('Record/forExcel.txt', 'w',encoding="utf-8")
+  f = open(Path+'forExcel.txt', 'w',encoding="utf-8")
   f.write(forExcelText)
   f.close()
   sys.exit()
@@ -81,6 +82,7 @@ if(len(args)==2):
 
 if(args[2] == 'start'):#todo
   data[taskId].start = str(DT_NOW.month)+'/' + str(DT_NOW.day)
+  data[taskId].state = 'progress'
   utils.updateData(data)
 
 if(args[2] == 'delete'):#todo

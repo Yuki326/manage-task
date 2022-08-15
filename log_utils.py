@@ -1,3 +1,4 @@
+Path = '~/Desktop/dev/atomica/manage-task/Record/'
 class Log:
   id = ''
   content = ''
@@ -12,6 +13,6 @@ class Log:
     return text.format(self.id,self.content,self.time )
 
   def saveLog(self):
-    f = open('Record/log.txt', 'a',encoding="utf-8")
+    f = open(Path+'log.txt', 'a',encoding="utf-8")
     f.write(self.toStr())
     f.close()
