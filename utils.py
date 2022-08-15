@@ -56,7 +56,7 @@ def getText(data):
   return text
 
 def getData():
-  f = open(Path+'test.txt', 'r+',encoding="utf-8")
+  f = open('Record/test.txt', 'r+',encoding="utf-8")
   areas = f.read().split()
   data = []
   tmp={}
