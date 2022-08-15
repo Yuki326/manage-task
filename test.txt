@@ -1,0 +1,4 @@
+A-10 # 105h16m low
+A-13 機能実装 3h17m done
+A-21 # 31h1m done
+A-2 # 30m done
