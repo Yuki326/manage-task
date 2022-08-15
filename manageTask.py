@@ -1,9 +1,7 @@
 import sys
 import datetime
-import time
 import utils
 import log_utils
-from enum import Enum
 DT_NOW = datetime.datetime.now()
 timeToStr = str(DT_NOW.strftime('%Y-%m-%d %H:%M:%S'))
 
@@ -80,9 +78,14 @@ if(len(args)==2):
   sys.exit()
 
 if(args[2] == 'start'):#todo
+  content = data[taskId].state + '->progress'
+  log = log_utils.Log(data[taskId].id,content,timeToStr)
+  log.saveLog()
+
   data[taskId].start = str(DT_NOW.month)+'/' + str(DT_NOW.day)
   data[taskId].state = 'progress'
   utils.updateData(data)
+
 
 if(args[2] == 'delete'):#todo
   print(data[taskId].id+"を削除します。")
