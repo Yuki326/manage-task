@@ -68,12 +68,13 @@ for i in range(len(areas)):
         tmp.state = areas[i]
         data.append(tmp)
 f.close()
-f = open('test.txt', 'w',encoding="utf-8")
 t1 = data[0].getTime()
 t2 = data[1].getTime()
 t = t1.addTime(t2)
 print(t.hour,t.minute)
 data[0].time= t.toStr()
+
+f = open('test.txt', 'w',encoding="utf-8")
 f.write(getText(data))
 f.close()
 #print(data)
