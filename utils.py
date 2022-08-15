@@ -43,7 +43,7 @@ class Task:
       if('m' in self.time):
         minuteS = self.time.split('h')[1].split('m')[0]
     else:
-      minuteS = int(self.time.split('m')[0])
+      minuteS = self.time.split('m')[0]
     errorMessage = '無効な引数です。:'+self.time
     if(hourS.isdecimal()):
       res.hour = int(hourS)
