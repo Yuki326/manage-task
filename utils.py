@@ -99,3 +99,42 @@ def getTime(str):
     else:
       res.minute = int(str.split('m')[0])
     return res
+
+def cmpState(s1,s2):
+  lst = ['progress','todo','wait','done','resolved']
+  n1 = n2 = 100
+  if(s1 in lst):
+    n1 = lst.index(s1)
+  if(s2 in lst):
+    n2 = lst.index(s2)
+  if(n1<n2):
+    return 1
+  elif(n1>n2):
+    return -1
+  else:
+    return 0
+  
+# クイックソートを行う関数
+def quick_sort(x):
+    # 基準値を抽出(半分の位置の値)
+    n = len(x)
+    pivot = x[int(n / 2)]
+ 
+    # i番目の値と基準値を比較して左l、右r、真ん中mに追加
+    l = []
+    r = []
+    m = []
+    for i in range(n):
+        sample = x[i]
+        if cmpState(sample.state,pivot.state)==1:
+            l.append(sample)
+        elif cmpState(sample.state,pivot.state)==-1:
+            r.append(sample)
+        else:
+            m.append(sample)
+    # lとrの場合でそれぞれ再帰処理による分割を行う
+    if l:
+        l = quick_sort(l)
+    if r:
+        r = quick_sort(r)
+    return l + m + r

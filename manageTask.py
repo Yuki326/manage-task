@@ -75,6 +75,8 @@ if(taskId == -1):
 if(len(args)==2):
   my_style = [TerminalColor.BOLD,color.get(data[taskId].state)]
   TerminalColor.c_print(data[taskId].toStr(),my_style)
+  data = utils.quick_sort(data)
+  utils.updateData(data)
   sys.exit()
 
 if(args[2] == 'start'):#todo
@@ -124,8 +126,7 @@ if('=' in symbols):
 if('?' in symbols):
   idx = symbols.index('?')+2
   oldState = data[taskId].state
-  data[taskId].state= args[idx][1:]
-
+  data[taskId].state= args[idx][1:]  
   content = oldState + '->' + data[taskId].state
   log = log_utils.Log(data[taskId].id,content,timeToStr)
   log.saveLog()
@@ -137,8 +138,11 @@ if(':' in symbols):
 if('~' in symbols):
   idx = symbols.index('~')+2
   data[taskId].end = args[idx][1:]
-# :start ~end
-utils.updateData(data)
 
 my_style = [TerminalColor.BOLD,color.get(data[taskId].state)]
 TerminalColor.c_print(data[taskId].toStr(),my_style)
+
+data = utils.quick_sort(data)
+utils.updateData(data)
+
+
