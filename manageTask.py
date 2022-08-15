@@ -81,6 +81,7 @@ if(len(args)==2):
 
 if(args[2] == 'start'):#todo
   data[taskId].start = str(DT_NOW.month)+'/' + str(DT_NOW.day)
+  data[taskId].state = 'progress'
   utils.updateData(data)
 
 if(args[2] == 'delete'):#todo
