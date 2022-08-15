@@ -71,7 +71,9 @@ if(taskId == -1):
   log.saveLog()
 
 if(len(args)==2):
-  my_style = [TerminalColor.BOLD,color.get(data[taskId].state)]
+  font_color = color.get(data[taskId].state)
+  if(font_color==None):font_color = TerminalColor.TODO
+  my_style = [TerminalColor.BOLD]
   TerminalColor.c_print(data[taskId].toStr(),my_style)
   data = utils.quick_sort(data)
   utils.updateData(data)
@@ -142,7 +144,9 @@ if('~' in symbols):
   idx = symbols.index('~')+2
   data[taskId].end = args[idx][1:]
 
-my_style = [TerminalColor.BOLD,color.get(data[taskId].state)]
+font_color = color.get(data[taskId].state)
+if(font_color==None):font_color = TerminalColor.TODO
+my_style = [TerminalColor.BOLD]
 TerminalColor.c_print(data[taskId].toStr(),my_style)
 
 data = utils.quick_sort(data)
