@@ -104,7 +104,8 @@ if(args[2] == 'delete'):#todo
 
 symbols = []
 for i in args[2:]:
-  symbols.append(i[:1])
+  if(len(args[i])>1):
+    symbols.append(i[:1])
 
 if('+' in symbols or '-' in symbols):
   origin = data[taskId].getTime()
