@@ -4,7 +4,7 @@
 - python manageTask.py : タスク一覧を表示
 - python manageTask.py [タスクID] start : タスクを開始
 - python manageTask.py [タスクID] delete : タスクを削除
-- python manageTask.py [タスクID] (引数) : タスクを編集※組み合わせ、順不同可
+- python manageTask.py [タスクID] (引数) : タスクを追加or編集※組み合わせ、順不同可
 # 引数一覧
 - ?[状態] :　状態を設定
 - +[ {}h{}m or {}h or {}m] : 時間を加算
