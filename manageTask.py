@@ -98,6 +98,14 @@ for i in args[2:]:
   if(len(i)>1):
     symbols.append(i[:1])
 
+if(symbols in 'start'):#todo
+  content = data[taskId].state + '->progress'
+  log = log_utils.Log(data[taskId].id,content,timeToStr)
+  log.saveLog()
+
+  data[taskId].start = str(DT_NOW.month)+'/' + str(DT_NOW.day)
+  data[taskId].state = 'progress'
+
 if('+' in symbols or '-' in symbols):
   origin = data[taskId].getTime()
   if('+' in symbols):
@@ -136,14 +144,6 @@ if(':' in symbols):
 if('~' in symbols):
   idx = symbols.index('~')+2
   data[taskId].end = args[idx][1:]
-
-if(symbols in 'start'):#todo
-  content = data[taskId].state + '->progress'
-  log = log_utils.Log(data[taskId].id,content,timeToStr)
-  log.saveLog()
-
-  data[taskId].start = str(DT_NOW.month)+'/' + str(DT_NOW.day)
-  data[taskId].state = 'progress'
 
 font_color = color.get(data[taskId].state)
 if(font_color==None):font_color = TerminalColor.TODO
