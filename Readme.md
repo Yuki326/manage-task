@@ -3,7 +3,6 @@
 # 操作説明
 - python manageTask.py : タスク一覧を表示
 - python manageTask.py [タスクID] : タスクを表示
-- python manageTask.py [タスクID] start : タスクを開始
 - python manageTask.py [タスクID] delete : タスクを削除
 - python manageTask.py [タスクID] (引数) : タスクを追加or編集※組み合わせ、順不同可
 # 引数一覧
@@ -13,6 +12,7 @@
 - =[タイトル]　: タイトルを設定
 - :[開始日] : 開始日を設定
 - ~[終了日] : 終了日を設定
+- start : 開始日を今日に状態をprogressに設定
 # コマンド例
 - python manageTask.py A-10 +1h ?proggress =スタイリング ~8/23
 
