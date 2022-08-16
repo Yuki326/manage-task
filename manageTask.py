@@ -98,7 +98,7 @@ for i in args[2:]:
   if(len(i)>1):
     symbols.append(i[:1])
 
-if(symbols in 'start'):#todo
+if('start' in symbols):#todo
   content = data[taskId].state + '->progress'
   log = log_utils.Log(data[taskId].id,content,timeToStr)
   log.saveLog()
