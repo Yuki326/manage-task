@@ -4,8 +4,7 @@ import utils
 import log_utils
 DT_NOW = datetime.datetime.now()
 timeToStr = str(DT_NOW.strftime('%Y-%m-%d %H:%M:%S'))
-Path = '~/Desktop/dev/atomica/manage-task/Record/'
-
+import path
 class TerminalColor:
     """ ターミナル色変更用クラス """
  
@@ -56,7 +55,7 @@ if(len(args)==1):
     hour = data[i].getTime().toHour()
     if(hour>0):
       forExcelText += data[i].id + ' ' + data[i].title + '\t' + str(data[i].getTime().toHour()) + '\n'
-  f = open(Path+'forExcel.txt', 'w',encoding="utf-8")
+  f = open(path.Path+'forExcel.txt', 'w',encoding="utf-8")
   f.write(forExcelText)
   f.close()
   sys.exit()
@@ -104,7 +103,7 @@ if(args[2] == 'delete'):#todo
 
 symbols = []
 for i in args[2:]:
-  if(len(args[i])>1):
+  if(len(i)>1):
     symbols.append(i[:1])
 
 if('+' in symbols or '-' in symbols):
