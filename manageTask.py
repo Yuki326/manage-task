@@ -79,16 +79,6 @@ if(len(args)==2):
   utils.updateData(data)
   sys.exit()
 
-if(args[2] == 'start'):#todo
-  content = data[taskId].state + '->progress'
-  log = log_utils.Log(data[taskId].id,content,timeToStr)
-  log.saveLog()
-
-  data[taskId].start = str(DT_NOW.month)+'/' + str(DT_NOW.day)
-  data[taskId].state = 'progress'
-  utils.updateData(data)
-
-
 if(args[2] == 'delete'):#todo
   print(data[taskId].id+"を削除します。")
 
@@ -103,6 +93,8 @@ if(args[2] == 'delete'):#todo
 
 symbols = []
 for i in args[2:]:
+  if(i == 'start'):
+    symbols.append(i)
   if(len(i)>1):
     symbols.append(i[:1])
 
@@ -144,6 +136,14 @@ if(':' in symbols):
 if('~' in symbols):
   idx = symbols.index('~')+2
   data[taskId].end = args[idx][1:]
+
+if(symbols in 'start'):#todo
+  content = data[taskId].state + '->progress'
+  log = log_utils.Log(data[taskId].id,content,timeToStr)
+  log.saveLog()
+
+  data[taskId].start = str(DT_NOW.month)+'/' + str(DT_NOW.day)
+  data[taskId].state = 'progress'
 
 font_color = color.get(data[taskId].state)
 if(font_color==None):font_color = TerminalColor.TODO
