@@ -2,6 +2,7 @@
 
 # 操作説明
 - python manageTask.py : タスク一覧を表示
+- python manageTask.py : タスクを表示
 - python manageTask.py [タスクID] start : タスクを開始
 - python manageTask.py [タスクID] delete : タスクを削除
 - python manageTask.py [タスクID] (引数) : タスクを追加or編集※組み合わせ、順不同可
