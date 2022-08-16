@@ -3,9 +3,17 @@
 # 操作説明
 
 - python manageTask.py : タスク一覧を表示
+  <<<<<<< HEAD
 - python manageTask.py [タスク ID] : タスクを表示
 - python manageTask.py [タスク ID] delete : タスクを削除
 - python manageTask.py [タスク ID] (引数) : タスクを追加 or 編集※組み合わせ、順不同可
+
+=======
+
+- python manageTask.py [タスク ID] : タスクを表示 ※なければ追加
+- python manageTask.py [タスク ID] delete : タスクを削除
+- python manageTask.py [タスク ID] (引数) : タスクを追加 or 編集※組み合わせ、順不同可
+  > > > > > > > d574520e0a338bb3396778173a449fb4a7f3d803
 
 # 引数一覧
 

@@ -2,6 +2,7 @@ import path
 class Log:
   id = ''
   content = ''
+  #comment
   time = ''
   def __init__(self,id,content,time ):
       self.id = id
