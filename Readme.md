@@ -2,6 +2,7 @@
 
 # 操作説明
 
+- python manageTask.py setup [ユーザー token] :
 - python manageTask.py : タスク一覧を表示
 - python manageTask.py [タスク ID] : タスクを表示
 - python manageTask.py [タスク ID] delete : タスクを削除
@@ -30,9 +31,16 @@
 # 実装予定(メモ)
 
 - tool : this
-- web-backend(api) : django
+- db : azure or firebase
+- web-backend(api) : django or typescript
 - web-frontend : react,typescript
 
 - ローカルのファイルから token を取得
 - web アプリにログインして token を取得
 - token を用いて api から情報を取得,編集 ※通信を暗号化して token の漏洩を防ぐ
+
+動線
+
+1. web アプリにログイン
+2. token を取得
+3. ツールに token を設定
