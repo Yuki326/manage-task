@@ -1,5 +1,6 @@
-# 説明
-- コマンドでタスクを管理するためのツールです
+# コマンドタスク管理&記録アプリ
+# 環境
+- python :3.7.9
 
 # デモ動画
 https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-9d76-21f5153ffd63.mp4
@@ -41,7 +42,7 @@ https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-
 
 # web アプリをコマンドで操作できるツール
 
-![image](https://user-images.githubusercontent.com/88820769/185037053-f4561a96-46a5-425a-a5c6-689afa5bdd64.png)
+![image](https://user-images.githubusercontent.com/88820769/185046760-1b5cba2d-73d9-4b5d-9722-9577f30fb2e2.png)
 
 1. webアプリのアカウント作成時にuuidでtokenを自動生成
 2. web アプリにログインして token を取得
