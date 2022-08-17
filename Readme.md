@@ -1,3 +1,7 @@
+# 説明
+- コマンドでタスクを管理するためのツールです
+
+# デモ動画
 https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-9d76-21f5153ffd63.mp4
 
 
@@ -35,7 +39,7 @@ https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-
 - web-backend(api) : django or typescript
 - web-frontend : react,typescript
 
-- ツールから web アプリを操作できる機能
+# web アプリをコマンドで操作できるツール
 
 1. web アプリにログインして token を取得
 2. token を環境変数に設定
