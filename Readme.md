@@ -41,6 +41,8 @@ https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-
 
 # web アプリをコマンドで操作できるツール
 
+![image](https://user-images.githubusercontent.com/88820769/185037053-f4561a96-46a5-425a-a5c6-689afa5bdd64.png)
+
 1. webアプリのアカウント作成時にuuidでtokenを自動生成
 2. web アプリにログインして token を取得
 3. token を環境変数に設定
