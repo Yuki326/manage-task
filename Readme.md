@@ -31,7 +31,6 @@
 # 実装予定(メモ)
 
 - tool : this
-- db : azure or firebase
 - web-backend(api) : django or typescript
 - web-frontend : react,typescript
 
