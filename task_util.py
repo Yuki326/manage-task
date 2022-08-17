@@ -2,6 +2,7 @@ import sys
 import path
 import common_util
 import time_util
+import color_util
 
 class Task:
   
@@ -14,6 +15,9 @@ class Task:
     self.time = time
     self.state = state
 
+  def colorPrint(self):
+    taskColor = color_util.colorTypes.get(self.state)
+    color_util.colorPrint(self.toStr(),taskColor)
   def getTime(self):
     res = time_util.Time(0,0)
     hourS = minuteS = '0'
@@ -35,6 +39,13 @@ class Task:
   def toStr(self):
     text = "{} {} {} {} {} {}\n"
     return text.format(self.id, self.title,self.start,self.end,self.time,self.state)
+
+def getNewTask(id):
+  Task(id,'#','-','-','0m','todo')
+
+def printTaskList(tasks):
+  for task in tasks:
+    task.colorPrint()
 
 def getText(tasks):
   text = ''

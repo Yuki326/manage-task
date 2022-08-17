@@ -3,6 +3,14 @@ def error(e):
   print(e)
   sys.exit()
 
+def getSymbols(args):
+    symbols = []
+    for arg in args:
+        if(arg== 'start'):
+            symbols.append(arg)
+        if(len(arg)>1):
+            symbols.append(arg[:1])
+    return symbols
   
 # クイックソートを行う関数
 def quick_sort(x,cmp):

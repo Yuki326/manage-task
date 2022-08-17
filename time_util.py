@@ -1,4 +1,8 @@
 import common_util
+import datetime
+
+DT_NOW = datetime.datetime.now()
+DT_NOW_TO_SHOW = str(DT_NOW.strftime('%Y-%m-%d %H:%M:%S'))
 
 class Time:
   def __init__(self, hour, minute):
@@ -23,7 +27,7 @@ class Time:
     res = self.hour + int(self.minute/6)/10
     return res
 
-def convertTime(str):
+def convertTime(str):#generate
     res = Time(0,0)
     hourS = minuteS = '0'
     if('h' in str):
@@ -40,3 +44,6 @@ def convertTime(str):
       res.minute = int(minuteS)
     else:common_util.error(errorMessage)
     return res
+
+def getSimpleDate():
+  str(DT_NOW.month)+'/' + str(DT_NOW.day)
