@@ -19,15 +19,14 @@ class Time:
     res.minute = sumMinute%60
     return res
   
-  def toStr(self):
-    text = "{}h{}m"
+  def toStr(self,text="{}h{}m"):
     return text.format(self.hour, self.minute)
 
   def toHour(self):
     res = self.hour + int(self.minute/6)/10
     return res
 
-def convertTime(str):#generate
+def generateTime(str):#generate
     res = Time(0,0)
     hourS = minuteS = '0'
     if('h' in str):
@@ -47,3 +46,16 @@ def convertTime(str):#generate
 
 def getSimpleDate():
   str(DT_NOW.month)+'/' + str(DT_NOW.day)
+
+def getTimeToAdd(args,symbols):
+  if('+' in symbols):
+    idx = symbols.index('+')
+    arg=args[idx][1:]
+    toAdd = generateTime(arg)
+  else:
+    idx = symbols.index('-')
+    arg=args[idx][1:]
+    toAdd = generateTime(arg)
+    toAdd.hour *= -1
+    toAdd.minute *= -1
+  return toAdd

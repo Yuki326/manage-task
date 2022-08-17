@@ -8,7 +8,7 @@ def getSymbols(args):
     for arg in args:
         if(arg== 'start'):
             symbols.append(arg)
-        if(len(arg)>1):
+        elif(len(arg)>1):
             symbols.append(arg[:1])
     return symbols
   

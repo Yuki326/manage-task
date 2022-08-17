@@ -20,7 +20,10 @@ class Log:
     f.write(self.toStr())
     f.close()
 
-def recordChange(id,oldState,newState):
-  content = oldState + '->' + newState
+def record(id,content):
   logToSave = Log(id,content,time_util.DT_NOW_TO_SHOW)
   logToSave.saveLog()
+
+def recordChangeState(id,oldState,newState):
+  content = oldState + '->' + newState
+  record(id,content)

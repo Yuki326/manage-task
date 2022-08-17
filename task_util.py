@@ -3,6 +3,7 @@ import path
 import common_util
 import time_util
 import color_util
+import log_util
 
 class Task:
   
@@ -39,6 +40,44 @@ class Task:
   def toStr(self):
     text = "{} {} {} {} {} {}\n"
     return text.format(self.id, self.title,self.start,self.end,self.time,self.state)
+
+  
+  def updateTaskByArgs(self,args):
+    symbols = common_util.getSymbols(args)
+
+    if('start' in symbols):#todo
+      log_util.recordChangeState(self.id,self.state,'progress')
+
+      self.start = time_util.getSimpleDate()
+      self.state = 'progress'
+
+    if('+' in symbols or '-' in symbols):
+      timeToAdd = time_util.getTimeToAdd(args,symbols)
+      origin = self.getTime()
+      newTime = origin.addTime(timeToAdd)
+      self.time= newTime.toStr()
+      log_util.record(self.id,timeToAdd.toStr("{:+}h{}m"))
+
+    if('?' in symbols):
+      idx = symbols.index('?')
+      self.state= args[idx][1:]
+
+      oldState = self.state
+      log_util.recordChangeState(self.id,oldState,self.state)
+
+    if('=' in symbols):
+      idx = symbols.index('=')
+      self.title = args[idx][1:]
+
+    if(':' in symbols):
+      idx = symbols.index(':')
+      self.start = args[idx][1:]
+
+    if('~' in symbols):
+      idx = symbols.index('~')
+      self.end = args[idx][1:]
+
+    return self
 
 def getNewTask(id):
   Task(id,'#','-','-','0m','todo')
@@ -103,4 +142,3 @@ def cmpState(s1,s2):
     return -1
   else:
     return 0
-  
