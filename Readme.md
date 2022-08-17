@@ -41,6 +41,7 @@ https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-
 
 # web アプリをコマンドで操作できるツール
 
-1. web アプリにログインして token を取得
-2. token を環境変数に設定
-3. token を用いて api から情報を取得,編集 ※通信を暗号化して token の漏洩を防ぐ
+1. webアプリのアカウント作成時にuuidでtokenを自動生成
+2. web アプリにログインして token を取得
+3. token を環境変数に設定
+4. token を用いて api から情報を取得,編集 ※通信を暗号化して token の漏洩を防ぐ
