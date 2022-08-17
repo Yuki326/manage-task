@@ -35,12 +35,8 @@
 - web-backend(api) : django or typescript
 - web-frontend : react,typescript
 
-- ローカルのファイルから token を取得
-- web アプリにログインして token を取得
-- token を用いて api から情報を取得,編集 ※通信を暗号化して token の漏洩を防ぐ
+- ツールから web アプリを操作できる機能
 
-動線
-
-1. web アプリにログイン
-2. token を取得
-3. ツールに token を設定
+1. web アプリにログインして token を取得
+2. token を環境変数に設定
+3. token を用いて api から情報を取得,編集 ※通信を暗号化して token の漏洩を防ぐ
