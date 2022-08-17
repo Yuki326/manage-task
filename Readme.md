@@ -1,4 +1,5 @@
-![image](https://user-images.githubusercontent.com/88820769/184725862-542f6035-ee73-4ffd-b51a-5a5c6cf7adde.png)
+https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-9d76-21f5153ffd63.mp4
+
 
 # 操作説明
 
