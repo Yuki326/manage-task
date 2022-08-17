@@ -42,7 +42,7 @@ class Task:
     return text.format(self.id, self.title,self.start,self.end,self.time,self.state)
 
   
-  def updateTaskByArgs(self,args):
+  def changeTaskByArgs(self,args):
     symbols = common_util.getSymbols(args)
 
     if('start' in symbols):#todo

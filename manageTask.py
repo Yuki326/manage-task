@@ -1,10 +1,8 @@
 import sys
-import excel_util
 
-import time_util
+import excel_util
 import task_util
 import log_util
-import common_util
 
 args = sys.argv # コマンドライン引数を取得
 
@@ -39,8 +37,8 @@ if(args[0] == 'delete'):#todo
   task_util.updateTasks(tasks)
   sys.exit()
 
-updatedTask = tasks[taskId].updateTaskByArgs(args)
-tasks[taskId] = updatedTask
+changedTask = tasks[taskId].changeTaskByArgs(args)
+tasks[taskId] = changedTask
 
 tasks[taskId].colorPrint()
 task_util.updateTasks(tasks)
