@@ -1,7 +1,7 @@
 import sys
-
+import color_util
 def error(e):
-  print(e)
+  color_util.colorPrint(e,color_util.TerminalColor.ERROR)
   sys.exit()
 
 def getSymbols(input):

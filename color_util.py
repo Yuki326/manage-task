@@ -7,7 +7,7 @@ class TerminalColor:
     DONE = '\033[92m'
     WAIT = '\033[86m'
     RESOLVED = '\033[95m'
- 
+    ERROR = '\033[31m'
     # フォントスタイル
     MARKER = '\033[7m'
     BOLD = '\033[1m'
