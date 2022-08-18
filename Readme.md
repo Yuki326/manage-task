@@ -10,7 +10,7 @@ https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-
 
 # 操作説明
 
-- python manageTask.py setup [ユーザー token] :
+- python manageTask.py setup : 必要なフォルダやファイルを追加
 - python manageTask.py : タスク一覧を表示
 - python manageTask.py [タスク ID] : タスクを表示
 - python manageTask.py [タスク ID] delete : タスクを削除

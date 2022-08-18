@@ -1,14 +1,32 @@
+import config
 import sys
 
+import os
 import excel_util
 import task_util
 import log_util
 import common_util
+# def doActionByfirstOption():
 
 def main(input):
+  input.pop(0)
+  if(input[0] == 'setup'):#todo
+    
+    # setup()
+    if(not(os.path.exists(config.PATH))):
+      print("フォルダを作成します。")
+      os.mkdir(config.PATH)
+
+    # addFiles()
+    for i in config.TEXT_FILES:
+      f = open(config.PATH+'/'+i, 'a')
+      f.write('')
+      f.close()
+    print("セットアップが完了しました。")
+    sys.exit()
+
   tasks = task_util.getTasks()
 
-  input.pop(0)
   if(input==[]):
     tasks = common_util.quick_sort(tasks,task_util.cmpState)
     task_util.updateTasks(tasks)
