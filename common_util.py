@@ -4,13 +4,13 @@ def error(e):
   print(e)
   sys.exit()
 
-def getSymbols(args):
+def getSymbols(input):
     symbols = []
-    for arg in args:
-        if(arg== 'start'):
-            symbols.append(arg)
-        elif(len(arg)>1):
-            symbols.append(arg[:1])
+    for i in input:
+        if(i== 'start'):
+            symbols.append(i)
+        elif(len(i)>1):
+            symbols.append(i[:1])
     return symbols
   
 # クイックソートを行う関数
