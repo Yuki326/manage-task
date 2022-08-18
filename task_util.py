@@ -143,6 +143,6 @@ def cmpState(s1,s2):
 def updateTasks(tasks):
   text = getText(tasks)
   if(type(text)!=str):sys.exit()
-  f = open(config.PATH+'/taskList.txt', 'w',encoding="utf-8")#ファイルの中身が消えるので注意
+  f = open(config.PATH+'/taskList.txt', 'w',encoding="utf-8")
   f.write(text)
   f.close()

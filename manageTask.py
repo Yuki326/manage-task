@@ -31,13 +31,13 @@ def main(input):
   input.pop(0)
 
   tasks = task_util.getTasks()
-  if(input==[]):
+  if(input is []):
     if(tasks==[]):common_util.error(EMPTY_TASK_MESSAGE)
     tasks = common_util.quick_sort(tasks,task_util.cmpState)
     output(tasks)
     sys.exit()
   
-  if(input[0] == 'setup'):
+  if(input[0] is 'setup'):
     setup()
     print(COMPLETED_SETUP_MESSAGE)
     sys.exit()
@@ -48,7 +48,7 @@ def main(input):
     log_util.recordChangeState(tasks[taskId].id,'none','todo')
 
   input.pop(0)
-  if(input==[]):
+  if(input is []):
     tasks = common_util.quick_sort(tasks,task_util.cmpState)
     output(tasks,taskId)
     sys.exit()

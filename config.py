@@ -3,4 +3,3 @@ MANAGE_TASK_PATH = os.path.dirname(os.path.abspath(__file__)) # manage-task„ÅÆ„É
 RECORD_FOLDER = 'Record'
 TEXT_FILES = ['taskList.txt','log.txt','forExcel.txt']
 PATH = MANAGE_TASK_PATH+'/'+RECORD_FOLDER
-# TOKEN = os.environ['MANAGE_TASK_TOKEN']
