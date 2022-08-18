@@ -4,9 +4,9 @@ def error(e):
   color_util.colorPrint(e,color_util.TerminalColor.ERROR)
   sys.exit()
 
-def getSymbols(input):
+def getSymbols(args):
     symbols = []
-    for i in input:
+    for i in args:
         if(i== 'start'):
             symbols.append(i)
         elif(len(i)>1):

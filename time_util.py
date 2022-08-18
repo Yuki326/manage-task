@@ -47,14 +47,14 @@ def generateTime(str):
 def getSimpleDate():
   return str(DT_NOW.month)+'/' + str(DT_NOW.day)
 
-def getTimeToAdd(input,symbols):
+def getTimeToAdd(args,symbols):
   if('+' in symbols):
     idx = symbols.index('+')
-    value=input[idx][1:]
+    value=args[idx][1:]
     toAdd = generateTime(value)
   else:
     idx = symbols.index('-')
-    value=input[idx][1:]
+    value=args[idx][1:]
     toAdd = generateTime(value)
     toAdd.hour *= -1
     toAdd.minute *= -1

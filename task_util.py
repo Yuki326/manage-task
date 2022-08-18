@@ -43,8 +43,8 @@ class Task:
     return text.format(self.id, self.title,self.start,self.end,self.time,self.state)
 
   
-  def changeTaskByInput(self,input):
-    symbols = common_util.getSymbols(input)
+  def changeTaskByArgs(self,args):
+    symbols = common_util.getSymbols(args)
 
     if('start' in symbols):#todo
       log_util.recordChangeState(self.id,self.state,'progress')
@@ -53,34 +53,34 @@ class Task:
       self.state = 'progress'
 
     if('+' in symbols or '-' in symbols):
-      timeToAdd = time_util.getTimeToAdd(input,symbols)
+      timeToAdd = time_util.getTimeToAdd(args,symbols)
       origin = self.getTime()
       newTime = origin.addTime(timeToAdd)
       self.time= newTime.toStr()
       logToSave = log_util.Log(self.id,timeToAdd.toStr("{:+}h{}m"),'',time_util.DT_NOW_TO_SHOW)
       if('{' in symbols):
         idx = symbols.index('{')
-        logToSave.comment = input[idx][1:]
+        logToSave.comment = args[idx][1:]
       logToSave.saveLog()
 
     if('?' in symbols):
       idx = symbols.index('?')
-      self.state= input[idx][1:]
+      self.state= args[idx][1:]
 
       oldState = self.state
       log_util.recordChangeState(self.id,oldState,self.state)
 
     if('=' in symbols):
       idx = symbols.index('=')
-      self.title = input[idx][1:]
+      self.title = args[idx][1:]
 
     if(':' in symbols):
       idx = symbols.index(':')
-      self.start = input[idx][1:]
+      self.start = args[idx][1:]
 
     if('~' in symbols):
       idx = symbols.index('~')
-      self.end = input[idx][1:]
+      self.end = args[idx][1:]
 
     return self
 

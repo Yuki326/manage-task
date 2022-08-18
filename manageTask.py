@@ -27,42 +27,40 @@ def setup():
       os.mkdir(config.PATH)
   addFiles()
 
-def main(input):
-  input.pop(0)
+def main(args):
+  args.pop(0)
 
   tasks = task_util.getTasks()
-  if(input is []):
+  if(args==[]):
     if(tasks==[]):common_util.error(EMPTY_TASK_MESSAGE)
     tasks = common_util.quick_sort(tasks,task_util.cmpState)
     output(tasks)
     sys.exit()
   
-  if(input[0] is 'setup'):
+  if(args[0] == 'setup'):
     setup()
     print(COMPLETED_SETUP_MESSAGE)
     sys.exit()
 
-  taskId = task_util.getTaskById(tasks,input[0])
+  taskId = task_util.getTaskById(tasks,args[0])
   if(taskId == -1):
-    tasks.append(task_util.getNewTask(input[0]))
+    tasks.append(task_util.getNewTask(args[0]))
     log_util.recordChangeState(tasks[taskId].id,'none','todo')
 
-  input.pop(0)
-  if(input is []):
+  args.pop(0)
+  if(args==[]):
     tasks = common_util.quick_sort(tasks,task_util.cmpState)
     output(tasks,taskId)
     sys.exit()
 
-  if(input[0] is 'delete'):
-    ans = input(tasks[taskId].id+"を削除しますか？(y,n)->")
-    if(ans is 'n'):sys.exit()
+  if(args[0] == 'delete'):
+    if(input(tasks[taskId].id+'を削除しますか？(y,n)>') == 'n'):sys.exit()
     log_util.recordChangeState(tasks[taskId].id,tasks[taskId].state,'none')
     tasks.pop(taskId)
-    tasks = common_util.quick_sort(tasks,task_util.cmpState)
     task_util.updateTasks(tasks)
     sys.exit()
 
-  changedTask = tasks[taskId].changeTaskByInput(input)
+  changedTask = tasks[taskId].changeTaskByArgs(args)
   tasks[taskId] = changedTask
 
   tasks = common_util.quick_sort(tasks,task_util.cmpState)
