@@ -29,16 +29,14 @@ def main(input):
 
   if(input==[]):
     tasks = common_util.quick_sort(tasks,task_util.cmpState)
-    task_util.updateTasks(tasks)
     task_util.printTaskList(tasks)
+    task_util.updateTasks(tasks)
     excel_util.outputForExcel(tasks)
     sys.exit()
 
   taskId = task_util.getTaskById(tasks,input[0])
   if(taskId == -1):
-    tasks.append(task_util.getNewTask(tasks[taskId].id))
-    taskId = len(tasks)-1
-
+    tasks.append(task_util.getNewTask(input[0]))
     log_util.recordChangeState(tasks[taskId].id,'none','todo')
 
   input.pop(0)

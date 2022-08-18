@@ -85,7 +85,7 @@ class Task:
     return self
 
 def getNewTask(id):
-  Task(id,'#','-','-','0m','todo')
+  return Task(id,'#','-','-','0m','todo')
 
 def printTaskList(tasks):
   for task in tasks:
