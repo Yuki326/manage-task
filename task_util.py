@@ -120,14 +120,6 @@ def getTasks():
   f.close()
   return tasks
 
-def updateTasks(tasks):
-  common_util.quick_sort(tasks,cmpState)
-  text = getText(tasks)
-  if(type(text)!=str):sys.exit()
-  f = open(path.Path+'taskList.txt', 'w',encoding="utf-8")#ファイルの中身が消えるので注意
-  f.write(text)
-  f.close()
-
 def getTaskById(tasks,id):
   for i in range(len(tasks)):
     if tasks[i].id == id:
@@ -141,9 +133,16 @@ def cmpState(s1,s2):
     n1 = lst.index(s1.state)
   if(s2.state in lst):
     n2 = lst.index(s2.state)
-  if(n1<n2):
+  if(n1>n2):
     return 1
-  elif(n1>n2):
+  elif(n1<n2):
     return -1
   else:
     return 0
+
+def updateTasks(tasks):
+  text = getText(tasks)
+  if(type(text)!=str):sys.exit()
+  f = open(path.Path+'taskList.txt', 'w',encoding="utf-8")#ファイルの中身が消えるので注意
+  f.write(text)
+  f.close()
