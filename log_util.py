@@ -1,4 +1,4 @@
-import path
+import config
 import time_util
 
 class Log:
@@ -17,7 +17,7 @@ class Log:
     return text.format(self.id,self.content,self.comment,self.time )
 
   def saveLog(self):
-    f = open(path.Path+'log.txt', 'a',encoding="utf-8")
+    f = open(config.PATH+'log.txt', 'a',encoding="utf-8")
     f.write(self.toStr())
     f.close()
 

@@ -1,5 +1,5 @@
 import sys
-import path
+import config
 import common_util
 import time_util
 import color_util
@@ -98,7 +98,7 @@ def getText(tasks):
   return text
 
 def getTasks():
-  f = open(path.Path+'taskList.txt', 'r+',encoding="utf-8")
+  f = open(config.PATH+'taskList.txt', 'r+',encoding="utf-8")
   areas = f.read().split()
   tasks = []
   tmp={}
@@ -143,6 +143,6 @@ def cmpState(s1,s2):
 def updateTasks(tasks):
   text = getText(tasks)
   if(type(text)!=str):sys.exit()
-  f = open(path.Path+'taskList.txt', 'w',encoding="utf-8")#ファイルの中身が消えるので注意
+  f = open(config.PATH+'taskList.txt', 'w',encoding="utf-8")#ファイルの中身が消えるので注意
   f.write(text)
   f.close()
