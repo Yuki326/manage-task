@@ -7,31 +7,40 @@ import task_util
 import log_util
 import common_util
 # def doActionByfirstOption():
+COMPLETED_SETUP_MESSAGE = 'セットアップが完了しました。'
+EMPTY_TASK_MESSAGE = '表示するタスクが存在しません'
+def output(tasks,id=None):
+  if(id is None):
+    task_util.printTaskList(tasks)
+  else:
+    tasks[id].colorPrint()
+  task_util.updateTasks(tasks)
+  excel_util.outputForExcel(tasks)
+
+def addFiles():
+  for i in config.TEXT_FILES:
+    f = open(config.PATH+'/'+i, 'a')
+    f.write('')
+    f.close()
+
+def setup():
+  if(not(os.path.exists(config.PATH))):
+      os.mkdir(config.PATH)
+  addFiles()
 
 def main(input):
   input.pop(0)
-  if(input[0] == 'setup'):#todo
-    
-    # setup()
-    if(not(os.path.exists(config.PATH))):
-      print("フォルダを作成します。")
-      os.mkdir(config.PATH)
-
-    # addFiles()
-    for i in config.TEXT_FILES:
-      f = open(config.PATH+'/'+i, 'a')
-      f.write('')
-      f.close()
-    print("セットアップが完了しました。")
-    sys.exit()
 
   tasks = task_util.getTasks()
-
   if(input==[]):
+    if(tasks==[]):common_util.error(EMPTY_TASK_MESSAGE)
     tasks = common_util.quick_sort(tasks,task_util.cmpState)
-    task_util.printTaskList(tasks)
-    task_util.updateTasks(tasks)
-    excel_util.outputForExcel(tasks)
+    output(tasks)
+    sys.exit()
+  
+  if(input[0] == 'setup'):
+    setup()
+    print(COMPLETED_SETUP_MESSAGE)
     sys.exit()
 
   taskId = task_util.getTaskById(tasks,input[0])
@@ -42,8 +51,7 @@ def main(input):
   input.pop(0)
   if(input==[]):
     tasks = common_util.quick_sort(tasks,task_util.cmpState)
-    tasks[taskId].colorPrint()
-    task_util.updateTasks(tasks)
+    output(tasks,taskId)
     sys.exit()
 
   if(input[0] == 'delete'):#todo
@@ -60,9 +68,8 @@ def main(input):
   changedTask = tasks[taskId].changeTaskByInput(input)
   tasks[taskId] = changedTask
 
-  tasks[taskId].colorPrint()
   tasks = common_util.quick_sort(tasks,task_util.cmpState)
-  task_util.updateTasks(tasks)
+  output(tasks,taskId)
 
 args = sys.argv # コマンドライン引数を取得
 main(args)
