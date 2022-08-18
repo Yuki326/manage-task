@@ -45,7 +45,7 @@ def generateTime(str):
     return res
 
 def getSimpleDate():
-  str(DT_NOW.month)+'/' + str(DT_NOW.day)
+  return str(DT_NOW.month)+'/' + str(DT_NOW.day)
 
 def getTimeToAdd(input,symbols):
   if('+' in symbols):
