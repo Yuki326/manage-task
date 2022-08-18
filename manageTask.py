@@ -6,7 +6,6 @@ import excel_util
 import task_util
 import log_util
 import common_util
-# def doActionByfirstOption():
 COMPLETED_SETUP_MESSAGE = 'セットアップが完了しました。'
 EMPTY_TASK_MESSAGE = '表示するタスクが存在しません'
 def output(tasks,id=None):
@@ -54,13 +53,11 @@ def main(input):
     output(tasks,taskId)
     sys.exit()
 
-  if(input[0] == 'delete'):#todo
-    print(tasks[taskId].id+"を削除します。")
-
+  if(input[0] is 'delete'):
+    ans = input(tasks[taskId].id+"を削除しますか？(y,n)->")
+    if(ans is 'n'):sys.exit()
     log_util.recordChangeState(tasks[taskId].id,tasks[taskId].state,'none')
-
     tasks.pop(taskId)
-
     tasks = common_util.quick_sort(tasks,task_util.cmpState)
     task_util.updateTasks(tasks)
     sys.exit()
