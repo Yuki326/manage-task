@@ -19,6 +19,7 @@ class Task:
   def colorPrint(self):
     taskColor = color_util.colorTypes.get(self.state)
     color_util.colorPrint(self.toStr(),taskColor)
+    
   def getTime(self):
     res = time_util.Time(0,0)
     hourS = minuteS = '0'
@@ -56,7 +57,11 @@ class Task:
       origin = self.getTime()
       newTime = origin.addTime(timeToAdd)
       self.time= newTime.toStr()
-      log_util.record(self.id,timeToAdd.toStr("{:+}h{}m"))
+      logToSave = log_util.Log(self.id,timeToAdd.toStr("{:+}h{}m"),'',time_util.DT_NOW_TO_SHOW)
+      if('{' in symbols):
+        idx = symbols.index('{')
+        logToSave.comment = args[idx][1:]
+      logToSave.saveLog()
 
     if('?' in symbols):
       idx = symbols.index('?')
@@ -131,7 +136,7 @@ def getTaskById(tasks,id):
 
 def cmpState(s1,s2):
   lst = ['progress','todo','wait','done','resolved']
-  n1 = n2 = 100
+  n1 = n2 = len(lst)
   if(s1.state in lst):
     n1 = lst.index(s1.state)
   if(s2.state in lst):

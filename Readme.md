@@ -1,10 +1,12 @@
 # コマンドタスク管理&記録アプリ
+
 # 環境
+
 - python :3.7.9
 
 # デモ動画
-https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-9d76-21f5153ffd63.mp4
 
+https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-9d76-21f5153ffd63.mp4
 
 # 操作説明
 
@@ -19,6 +21,7 @@ https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-
 - ?[状態] :　状態を設定
 - +[ {}h{}m or {}h or {}m] : 時間を加算
 - -[ {}h{}m or {}h or {}m] : 時間を減算
+- {[作業内容] : 作業内容を記録(+ or -と組み合わせて使った場合のみ)
 - =[タイトル]　: タイトルを設定
 - :[開始日] : 開始日を設定
 - ~[終了日] : 終了日を設定
@@ -44,7 +47,7 @@ https://user-images.githubusercontent.com/88820769/185028589-e6c7f26a-8843-4b47-
 
 ![image](https://user-images.githubusercontent.com/88820769/185046760-1b5cba2d-73d9-4b5d-9722-9577f30fb2e2.png)
 
-1. webアプリのアカウント作成時にuuidでtokenを自動生成
+1. web アプリのアカウント作成時に uuid で token を自動生成
 2. web アプリにログインして token を取得
 3. token を環境変数に設定
 4. token を用いて api から情報を取得,編集 ※通信を暗号化して token の漏洩を防ぐ

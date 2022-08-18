@@ -26,7 +26,7 @@ class Time:
     res = self.hour + int(self.minute/6)/10
     return res
 
-def generateTime(str):#generate
+def generateTime(str):
     res = Time(0,0)
     hourS = minuteS = '0'
     if('h' in str):
