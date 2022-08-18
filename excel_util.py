@@ -11,6 +11,6 @@ def outputForExcel(tasks):
   text = ''
   for task in tasks:
       text += getTextForExcel(task)
-  f = open(config.PATH+'forExcel.txt', 'w',encoding="utf-8")
+  f = open(config.PATH+'/forExcel.txt', 'w',encoding="utf-8")
   f.write(text)
   f.close()
